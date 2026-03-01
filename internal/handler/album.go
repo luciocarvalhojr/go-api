@@ -8,10 +8,10 @@ import (
 
 // Album represents data about a record album.
 type Album struct {
-    ID     string  `json:"id"`
-    Title  string  `json:"title"`
-    Artist string  `json:"artist"`
-    Price  float64 `json:"price"`
+    ID     string  `json:"id" example:"1"`
+    Title  string  `json:"title" example:"Blue Train"`
+    Artist string  `json:"artist" example:"John Coltrane"`
+    Price  float64 `json:"price" example:"56.99"`
 }
 
 // albums slice to seed record album data.
@@ -29,11 +29,25 @@ func RegisterRoutes(router *gin.Engine) {
 }
 
 // getAlbums responds with the list of all albums as JSON.
+// @Summary      Get all albums
+// @Description  Responds with the list of all albums as JSON.
+// @Tags         albums
+// @Produce      json
+// @Success      200  {array}   Album
+// @Router       /albums [get]
 func getAlbums(c *gin.Context) {
     c.IndentedJSON(http.StatusOK, albums)
 }
 
 // postAlbums adds an album from JSON received in the request body.
+// @Summary      Post a new album
+// @Description  Adds an album from JSON received in the request body.
+// @Tags         albums
+// @Accept       json
+// @Produce      json
+// @Param        album  body      Album  true  "Album JSON"
+// @Success      201    {object}  Album
+// @Router       /albums [post]
 func postAlbums(c *gin.Context) {
     var newAlbum Album
 
@@ -48,6 +62,14 @@ func postAlbums(c *gin.Context) {
 }
 
 // getAlbumByID locates the album whose ID value matches the id parameter.
+// @Summary      Get an album by ID
+// @Description  Locates the album whose ID value matches the id parameter.
+// @Tags         albums
+// @Produce      json
+// @Param        id   path      string  true  "Album ID"
+// @Success      200  {object}  Album
+// @Failure      404  {object}  map[string]string
+// @Router       /albums/{id} [get]
 func getAlbumByID(c *gin.Context) {
     id := c.Param("id")
 

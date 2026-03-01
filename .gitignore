@@ -1,0 +1,22 @@
+# Binaries
+/api
+/api.exe
+/bin
+/dist
+
+# Go-related
+/go.mod
+/go.sum
+vendor/
+
+# OS-specific
+.DS_Store
+
+# IDE-specific
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Coverage
+*.out
