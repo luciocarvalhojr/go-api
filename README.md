@@ -13,7 +13,7 @@ A production-ready Go API following the [Standard Go Project Layout](https://git
 
 ## 🛠️ Prerequisites
 
-- **Go**: v1.24 or higher
+- **Go**: v1.26 or higher
 - **Docker**: For containerization
 - **(Optional) Local Security Tools**:
   - `golangci-lint` (Linting)
