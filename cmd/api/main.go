@@ -13,5 +13,8 @@ func main() {
 
     // Running on :8080 by default. 
     // In production, you would probably want to use an environment variable for the port.
-    router.Run(":8080")
+    err := router.Run(":8080")
+    if err != nil {
+        panic("Failed to start the server: " + err.Error())
+    }
 }

@@ -83,6 +83,23 @@ docker run -p 8080:8080 go-api
 
 ---
 
+## 🏗️ Git Hooks
+
+This project includes a `pre-push` hook that runs tests and security scans automatically before every push. This helps ensure that no broken or insecure code is pushed to the remote repository.
+
+### Setup Hooks
+To install the local hooks, run the following command:
+```bash
+cp scripts/pre-push .git/hooks/pre-push && chmod +x .git/hooks/pre-push
+```
+
+If you ever need to bypass the hook, use the `--no-verify` flag:
+```bash
+git push --no-verify
+```
+
+---
+
 ## 🤖 CI/CD (DevSecOps Pipeline)
 
 The project includes a GitHub Actions workflow in `.github/workflows/devsecops.yml` that automatically runs on every push and pull request to `main`:
