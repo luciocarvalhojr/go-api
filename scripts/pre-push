@@ -6,6 +6,15 @@ set -e
 
 echo "Running pre-push hooks..."
 
+# 0. Regenerate Swagger Documentation (if installed)
+if command -v swag >/dev/null 2>&1; then
+    echo "Regenerating Swagger documentation..."
+    swag init -g cmd/api/main.go
+else
+    echo "swag not found, skipping documentation regeneration."
+    echo "Tip: Install with 'go install github.com/swaggo/swag/cmd/swag@latest'"
+fi
+
 # 1. Run Tests
 echo "Running tests..."
 go test -v -race -cover ./...

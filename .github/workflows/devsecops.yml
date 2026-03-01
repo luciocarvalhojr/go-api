@@ -25,6 +25,16 @@ jobs:
       - name: Test
         run: go test -v -race -cover ./...
 
+      - name: Verify Swagger Documentation
+        run: |
+          go install github.com/swaggo/swag/cmd/swag@latest
+          swag init -g cmd/api/main.go
+          if [ -n "$(git status --porcelain docs/)" ]; then
+            echo "Error: Swagger documentation is out of date. Please run 'swag init -g cmd/api/main.go' locally and commit the changes."
+            git status --porcelain docs/
+            exit 1
+          fi
+
   security-scan:
     runs-on: ubuntu-latest
     steps:

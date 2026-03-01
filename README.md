@@ -69,6 +69,28 @@ govulncheck ./...
 
 ---
 
+## 📚 Swagger Documentation
+
+This project uses [swag](https://github.com/swaggo/swag) to generate Swagger 2.0 documentation from code comments.
+
+### 1. Install swag
+```bash
+go install github.com/swaggo/swag/cmd/swag@latest
+```
+
+### 2. Regenerate Documentation
+Run this command from the project root whenever you update API comments:
+```bash
+swag init -g cmd/api/main.go
+```
+The documentation will be updated in the `docs/` directory.
+
+### 3. View Swagger UI
+Start the API and navigate to:
+`http://localhost:8080/swagger/index.html`
+
+---
+
 ## 🐳 Docker
 
 ### Build the Image
