@@ -23,9 +23,21 @@ var albums = []Album{
 
 // RegisterRoutes registers the album-related routes on the gin engine.
 func RegisterRoutes(router *gin.Engine) {
+    router.GET("/ping", getPing)
     router.GET("/albums", getAlbums)
     router.GET("/albums/:id", getAlbumByID)
     router.POST("/albums", postAlbums)
+}
+
+// getPing responds with a simple "pong" message to test the server's responsiveness.
+// @Summary      Ping the server
+// @Description  Responds with a simple "pong" message to test the server's responsiveness.
+// @Tags         health
+// @Produce      json
+// @Success      200  {object}  map[string]string
+// @Router       /ping [get]
+func getPing(c *gin.Context) {
+    c.JSON(http.StatusOK, gin.H{"message": "pong"})
 }
 
 // getAlbums responds with the list of all albums as JSON.

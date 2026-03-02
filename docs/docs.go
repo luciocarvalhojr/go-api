@@ -116,6 +116,29 @@ const docTemplate = `{
                     }
                 }
             }
+        },
+        "/ping": {
+            "get": {
+                "description": "Responds with a simple \"pong\" message to test the server's responsiveness.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "health"
+                ],
+                "summary": "Ping the server",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
