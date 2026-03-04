@@ -67,7 +67,7 @@ jobs:
       - name: Run Trivy (Image Scan)
         uses: aquasecurity/trivy-action@0.34.2
         with:
-          version: v0.69.2 #workaround for build failure with latest version
+          #version: v0.69.2 #workaround for build failure with latest version
           image-ref: 'go-api:${{ github.sha }}'
           format: 'table'
           exit-code: '1'
