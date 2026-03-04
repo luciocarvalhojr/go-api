@@ -133,7 +133,7 @@ jobs:
         uses: docker/scout-action@v1
         with:
           command: cves
-          organization: luciocarvalhojr
+          organization: capivaracode
           image: ghcr.io/${{ github.repository }}:${{ env.LATEST_TAG }}
           ignore-unchanged: true
           write-comment: true
